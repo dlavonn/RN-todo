@@ -18,13 +18,12 @@ const ModalName = (props) => {
   };
 
   const closeModalHandler = () => {
-   
     setIsVisible(false);
 
     props.collectData({
-        name: name,
-        modalShow: false
-    })
+      name: name,
+      modalShow: false,
+    });
   };
 
   return (
@@ -69,9 +68,8 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderWidth: 1,
     margin: 20,
-    padding:10,
-    width: 250
-
+    padding: 10,
+    width: 250,
   },
 });
 export default ModalName;

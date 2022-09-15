@@ -7,14 +7,14 @@ import {
   View,
   Button,
   TextInput,
-  Pressable, 
-  FlatList
+  Pressable,
+  FlatList,
 } from "react-native";
 import ModalName from "./components/modal/Modal";
 import ListStyle from "./components/liststyle/ListStyle";
 
 export default function App() {
-  const [enterData, setEnterData] = useState(["Walking dog", "Clean kitchen"])
+  const [enterData, setEnterData] = useState(["Walking dog", "Clean kitchen"]);
   const [enterText, setEnterText] = useState("");
   const [childObj, setChildObj] = useState({
     name: "",
@@ -27,16 +27,11 @@ export default function App() {
   };
 
   const AddItemHandlar = () => {
+    setEnterData((ps) => {
+      return [...ps, enterText];
+    });
 
-     
-    setEnterData( ps =>{
-
-       return [...ps, enterText]
-    }
-    ) 
-
-    setEnterText('')
-
+    setEnterText("");
   };
 
   return (
@@ -69,28 +64,18 @@ export default function App() {
             />
           </View>
           <View style={styles.tester}>
-          <FlatList
-        data={enterData}
-        renderItem={ ({item, index}) => {
-
-          return (
-          <>
-          <ListStyle  enterData={item} />
-          </>
-
-          )
-        }}
-      
-      />
-            </View>
-
-     
-
-
-
-       
-    
-        </View>     
+            <FlatList
+              data={enterData}
+              renderItem={({ item, index }) => {
+                return (
+                  <>
+                    <ListStyle enterData={item} />
+                  </>
+                );
+              }}
+            />
+          </View>
+        </View>
       )}
     </View>
   );
@@ -111,7 +96,7 @@ const styles = StyleSheet.create({
   enterInfo: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   textI: {
     borderColor: "black",
@@ -124,7 +109,7 @@ const styles = StyleSheet.create({
     height: 55,
     paddingHorizontal: 19,
   },
-  tester:{
-    flexDirection: "column"
-  }
+  tester: {
+    flexDirection: "column",
+  },
 });
